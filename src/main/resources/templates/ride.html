@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/ride.css" th:href="@{/css/ride.css}">
+    <script type="text/javascript" src="/static/js/ride.js" th:href="@{/js/ride.js}"></script>
+    <title>Document</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a th:href="@{/}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a th:href="@{/about}" class="nav-link">About</a></li>
+                <li class="nav-item"><a th:href="@{/pricing}" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a th:href="@{/cars}" class="nav-link">Cars</a></li>
+
+                <li class="nav-item" th:if="${!isAuthenticated}"><a th:href="@{/auth/login}" class="nav-link">Log in</a></li>
+                <li class="nav-item active" th:if="${isAuthenticated}"><a th:href="@{/ride}" class="nav-link">Ride</a></li>
+                <li class="nav-item" th:if="${isAuthenticated}"><a th:href="@{/profile}" class="nav-link">Profile</a></li>
+                <li class="nav-item" th:if="${isAdmin}"><a th:href="@{/add-car}" class="nav-link">Add car</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div th:if="${!isRideExist}" class="container-message">
+    <h1>Chose a car to start your ride</h1>
+    <a th:href="@{/cars}">Chose a car</a>
+</div>
+
+
+
+<div th:if="${isRideExist}" th:object="${ride.car}" class="container-ride">
+    <div class="h1-container">
+        <h2>Active ride</h2>
+        <div class="img-container" th:style="'background-image: url(' + *{imgRequestUrl} + ');'"></div>
+        <h3 th:text="*{name} + ' (' + *{number} + ')'">Chevrolet Aveo (3214)</h3>
+    </div>
+
+    <table class="description">
+        <tr>
+            <td>Price per min:</td>
+            <td th:text="*{pricePerMin} + '$'">1.99$</td>
+        </tr>
+        <tr>
+            <td>Price per hour:</td>
+            <td th:text="*{pricePerHour} + '$'">60.99$</td>
+        </tr>
+        <tr>
+            <td>Price per day:</td>
+            <td th:text="*{pricePerDay} + '$'">700.95$</td>
+        </tr>
+        <tr>
+            <td>Transmission:</td>
+            <td th:text="*{transmission}">Automatic</td>
+        </tr>
+        <tr>
+            <td>Seats:</td>
+            <td th:text="*{seats}">5</td>
+        </tr>
+        <tr>
+            <td>Started at:</td>
+            <td th:text="${start}">13.05.2023 11:15</td>
+        </tr>
+    </table>
+
+    <div class="manage">
+        <h3>Manage</h3>
+
+        <table class="field-container">
+            <tr>
+                <td><label for="min">Minutes from now: </label></td>
+                <td><input type="number" min="0" max="59" id="min"></td>
+            </tr>
+            <tr>
+                <td><label for="hour">Hours from now: </label></td>
+                <td><input type="number" min="0" max="23" id="hour"></td>
+            </tr>
+            <tr>
+                <td><label for="day">Days from now: </label></td>
+                <td><input type="number" min="0" max="30" id="day"></td>
+            </tr>
+        </table>
+
+        <div class="total">
+            <span><b>Total: </b></span><b><span th:text="${total}" id="total-value">65.93</span>$</b>
+        </div>
+
+        <div class="btn-container">
+            <span id="btn-check">Check</span>
+            <span id="btn-finish">Finish</span>
+        </div>
+
+    </div>
+
+    <form id="finish-form" method="post" th:action="@{/ride/finish-ride}">
+        <input type="submit">
+    </form>
+
+</div>
+</body>
+</html>

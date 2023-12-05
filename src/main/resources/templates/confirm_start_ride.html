@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/confirm_start_ride.css" th:href="@{/css/confirm_start_ride.css}">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=1c820e85-9b72-4f87-9e18-f0af1f2449b5&lang=ru_RU" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/js/confirm_start_ride.js" th:src="@{/js/confirm_start_ride.js}"></script>
+    <title>Confirm Ride</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a th:href="@{/}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a th:href="@{/about}" class="nav-link">About</a></li>
+                <li class="nav-item"><a th:href="@{/pricing}" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a th:href="@{/cars}" class="nav-link">Cars</a></li>
+
+                <li class="nav-item" th:if="${!isAuthenticated}"><a th:href="@{/auth/login}" class="nav-link">Log in</a></li>
+                <li class="nav-item" th:if="${isAuthenticated}"><a th:href="@{/ride}" class="nav-link">Ride</a></li>
+                <li class="nav-item" th:if="${isAuthenticated}"><a th:href="@{/profile}" class="nav-link">Profile</a></li>
+                <li class="nav-item" th:if="${isAdmin}"><a th:href="@{/add-car}" class="nav-link">Add car</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-confirm" th:object="${car}">
+    <div class="h1-container">
+        <h2>Are you ready to start your ride?</h2>
+        <div class="img-container" th:style="'background-image: url(' + *{imgRequestUrl} + ');'"></div>
+        <h3 th:text="*{name} + ' (' + *{number} + ')'">Chevrolet Aveo (3214)</h3>
+    </div>
+
+    <table class="description">
+        <tr>
+            <td>Price per min:</td>
+            <td th:text="*{pricePerMin} + '$'">1.99$</td>
+        </tr>
+        <tr>
+            <td>Price per hour:</td>
+            <td th:text="*{pricePerHour} + '$'">60.99$</td>
+        </tr>
+        <tr>
+            <td>Price per day:</td>
+            <td th:text="*{pricePerDay} + '$'">700.95$</td>
+        </tr>
+        <tr>
+            <td>Transmission:</td>
+            <td th:text="*{transmission}">Automatic</td>
+        </tr>
+        <tr>
+            <td>Seats:</td>
+            <td th:text="*{seats}">5</td>
+        </tr>
+        <tr>
+            <td>Fuel:</td>
+            <td th:text="*{fuel}">Petrol</td>
+        </tr>
+    </table>
+
+    <div id="map"></div>
+    <p class="warn-message">Ride will start automatically 20 min after your confirmation</p>
+    <div class="btn-container">
+        <a th:href="@{/}" class="btn-cancel">Cancel</a>
+        <form method="post" th:action="@{/create-ride/{id}(id=*{id})}">
+            <input class="btn-start" type="submit" value="Start">
+        </form>
+    </div>
+</div>
+</body>
+</html>

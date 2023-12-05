@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Work+Sans&display=swap');
+
+body {
+    background-color: #85edeb;
+}
+
+.container-confirm {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #daede7;
+    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    outline: 1px solid #1c1f1f;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.h1-container {
+    text-align: center;
+}
+
+.description {
+    width: 250px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+.btn-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+form {
+    width: 100px;
+}
+
+.btn-start {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    color: #fff; /* Белый цвет текста */
+    text-decoration: none; /* Убираем подчеркивание ссылки */
+    border-radius: 4px; /* Закругляем углы */
+    margin-right: 20px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.btn-start:hover {
+    background-color: #45a049;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #b4b8b8;
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 20px;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+.btn-cancel:hover {
+    background-color: #acadad;
+}
+
+.img-container {
+    margin: 20px auto;
+    width: 90%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+#map {
+    width: 95%;
+    height: 400px;
+    margin: 30px auto;
+    outline: 1px solid;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.balloon_car_img_box {
+    position: relative;
+    /*overflow: hidden;*/
+    width: 150px;
+    height: 80px;
+}
+
+.balloon_car_img_box img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.warn-message {
+    text-align: center;
+}

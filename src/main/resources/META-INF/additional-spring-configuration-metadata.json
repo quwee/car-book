@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "upload-dir-path",
+      "type": "java.lang.String",
+      "description": "Path where the images are uploaded."
+  }
+] }

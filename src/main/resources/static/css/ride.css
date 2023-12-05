@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Work+Sans&display=swap');
+
+body {
+    background-color: #f8f8f8;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container-message {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.container-message h1 {
+    font-size: 40px;
+    margin-bottom: 40px;
+    color: #333333;
+}
+
+.container-message a {
+    color: #0099ff;
+    text-decoration: none;
+    font-size: 24px;
+
+}
+
+.container-message a:hover {
+    color: #027ed1;
+}
+
+
+
+.container-ride {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #d7faf8;
+    box-sizing: border-box;
+    padding: 20px 40px;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    outline: 1px solid #1c1f1f;
+
+}
+
+
+
+.h1-container h2 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.h1-container h3 {
+    margin: 0 5px;
+}
+
+.description {
+    width: 300px;
+    margin: 20px 5px;
+    font-size: 18px;
+}
+
+.img-container {
+    margin: 20px auto;
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.total {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+}
+
+#btn-check, #btn-finish {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #b4b8b8;
+    color: black;
+}
+
+#btn-check:hover, #btn-finish:hover {
+    background-color: #acadad;
+    cursor: pointer;
+}
+
+#finish-form {
+    display: none;
+}

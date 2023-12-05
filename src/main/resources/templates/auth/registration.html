@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/login_form.css" th:href="@{/css/login_form.css}">
+    <title>Registration</title>
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <form class="register-form" method="post" th:action="@{/auth/registration}" th:object="${user}">
+            <input type="text" th:field="*{username}" placeholder="Username">
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+
+            <input type="password" th:field="*{password}" placeholder="Password">
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
+            <input type="email" th:field="*{email}" placeholder="Email">
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+            <input type="text" th:field="*{ccNumber}" placeholder="Credit card number">
+            <p th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}"></p>
+
+            <input type="text" th:field="*{ccExpiration}" placeholder="Expiration">
+            <p th:if="${#fields.hasErrors('ccExpiration')}" th:errors="*{ccExpiration}"></p>
+
+            <input type="text" th:field="*{ccCvv}" placeholder="CVV">
+            <p th:if="${#fields.hasErrors('ccCvv')}" th:errors="*{ccCvv}"></p>
+
+            <input type="submit" value="Confirm">
+            <p class="message">Already registered? <a th:href="@{/auth/login}">Sign In</a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

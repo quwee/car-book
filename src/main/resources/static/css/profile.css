@@ -1,0 +1,68 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400);
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+.profile {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 400px;
+    margin: 100px auto 100px;
+    box-sizing: border-box;
+    padding: 45px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.profile p {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 16px;
+}
+.profile span {
+    font-weight: 400;
+    font-size: 16px;
+}
+.h2-container {
+    display: flex;
+    justify-content: center;
+}
+.h2-container h2 {
+    margin-top: 0;
+}
+
+.edit-btn-container {
+    text-align: center;
+    box-sizing: border-box;
+}
+.edit-btn-container a {
+    text-decoration: none;
+    background: #1bcc5f;
+    padding: 10px;
+    color: #fff;
+    width: 100%;
+    display: inline-block;
+}
+.logout-btn-container {
+    text-align: center;
+    margin-top: 25px;
+}
+.logout-btn-container input[type=submit] {
+    color: #45524a;
+    border: 0;
+}
+.logout-btn-container input[type=submit]:hover {
+    color: black;
+    cursor: pointer;
+}
+
+body {
+    background: #7ae6d3;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

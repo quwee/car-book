@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
+  color: #777;
+  background: #4CAF50;
+}
+
+form {
+  box-sizing: border-box;
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #F9F9F9;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+form h3 {
+  font-size: 30px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 10px;
+}
+
+form input, select, textarea {
+   width: 100%;
+   border-radius: 4px;
+}
+
+form div button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form div button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+form select {
+  padding: 10px 35px 10px 15px;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  appearance: none;
+  border: 1px solid #a8b3b3;
+  cursor: pointer;
+  background-image: url(img/dropdown_arrow.png);
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 15px;
+}
+
+form input[type=text] {
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border: 1px solid #a8b3b3;
+}
+form input[type=text]:hover, form select:hover {
+  border: 1px solid black;
+}
+
+form textarea {
+  resize: none;
+  margin-top: 20px;
+}
+
+form input[type=file] {
+  cursor: pointer;
+}
+form input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #e4ebeb;
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+form input[type=file]::file-selector-button:hover {
+  background: #c6cccc;
+}
+
+.btn-submit-container {
+  display: flex;
+  justify-content: center;
+}
+
+.field-container {
+  margin-bottom: 10px;
+}
+.field-container p {
+  color: red;
+  font-size: 14px;
+  margin: 0 0 0 20px;
+}

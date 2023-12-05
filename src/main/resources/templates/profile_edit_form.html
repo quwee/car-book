@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/login_form.css" th:href="@{/css/login_form.css}">
+    <title>Registration</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a th:href="@{/}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a th:href="@{/about}" class="nav-link">About</a></li>
+                <li class="nav-item"><a th:href="@{/pricing}" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a th:href="@{/cars}" class="nav-link">Cars</a></li>
+
+                <li class="nav-item" th:if="${!isAuthenticated}"><a th:href="@{/auth/login}" class="nav-link">Log in</a></li>
+                <li class="nav-item" th:if="${isAuthenticated}"><a th:href="@{/ride}" class="nav-link">Ride</a></li>
+                <li class="nav-item active" th:if="${isAuthenticated}"><a th:href="@{/profile}" class="nav-link">Profile</a></li>
+                <li class="nav-item" th:if="${isAdmin}"><a th:href="@{/add-car}" class="nav-link">Add car</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="login-page">
+    <div class="form">
+        <form class="register-form" method="post" th:action="@{/profile/edit}" th:object="${user}">
+            <input type="text" th:field="*{username}" th:value="*{username}">
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+
+            <input type="password" th:field="*{password}" th:value="*{password}">
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
+            <input type="email" th:field="*{email}" th:value="*{email}">
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+            <input type="text" th:field="*{ccNumber}" th:value="*{ccNumber}">
+            <p th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}"></p>
+
+            <input type="text" th:field="*{ccExpiration}" th:value="*{ccExpiration}">
+            <p th:if="${#fields.hasErrors('ccExpiration')}" th:errors="*{ccExpiration}"></p>
+
+            <input type="text" th:field="*{ccCvv}" th:value="*{ccCvv}">
+            <p th:if="${#fields.hasErrors('ccCvv')}" th:errors="*{ccCvv}"></p>
+
+            <input type="submit" value="Confirm">
+        </form>
+    </div>
+</div>
+</body>
+</html>

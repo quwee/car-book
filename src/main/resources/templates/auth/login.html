@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/login_form.css" th:href="@{/css/login_form.css}">
+    <title>Log in</title>
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" method="post" th:action="@{/process-login}">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+            <input type="text" name="username" placeholder="username"/>
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" value="login">
+            <div th:if="${param.error}" style="color: red">
+                Incorrect login or password!
+            </div>
+            <p class="message">Not registered? <a th:href="@{/auth/registration}">Create an account</a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

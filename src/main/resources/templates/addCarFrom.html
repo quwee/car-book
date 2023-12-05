@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/form.css" th:href="@{/css/form.css}">
+    <title>Add car</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a th:href="@{/}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a th:href="@{/about}" class="nav-link">About</a></li>
+                <li class="nav-item"><a th:href="@{/pricing}" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a th:href="@{/cars}" class="nav-link">Cars</a></li>
+
+                <li class="nav-item" th:if="${!isAuthenticated}"><a th:href="@{/auth/login}" class="nav-link">Log in</a></li>
+                <li class="nav-item" th:if="${isAuthenticated}"><a th:href="@{/ride}" class="nav-link">Ride</a></li>
+                <li class="nav-item" th:if="${isAuthenticated}"><a th:href="@{/profile}" class="nav-link">Profile</a></li>
+                <li class="nav-item active" th:if="${isAdmin}"><a th:href="@{/add-car}" class="nav-link">Add car</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<form method="POST" th:action="@{/add-car}" th:object="${car}" enctype="multipart/form-data">
+    <h3>Add New Car</h3>
+    <div class="field-container">
+        <input type="text" th:field="*{name}" placeholder="Name">
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+    </div>
+    <div class="field-container">
+        <input type="text" th:field="*{brand}" placeholder="Brand">
+        <p th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></p>
+    </div>
+    <div class="field-container">
+        <input type="text" th:field="*{pricePerMin}" placeholder="Price per min">
+        <p th:if="${#fields.hasErrors('pricePerMin')}" th:errors="*{pricePerMin}"></p>
+    </div>
+    <div class="field-container">
+        <input type="text" th:field="*{pricePerHour}" placeholder="Price per hour">
+        <p th:if="${#fields.hasErrors('pricePerHour')}" th:errors="*{pricePerHour}"></p>
+    </div>
+    <div class="field-container">
+        <input type="text" th:field="*{pricePerDay}" placeholder="Price per day">
+        <p th:if="${#fields.hasErrors('pricePerDay')}" th:errors="*{pricePerDay}"></p>
+    </div>
+    <div class="field-container">
+        <input type="text" th:field="*{number}" placeholder="Number">
+        <p th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></p>
+    </div>
+    <div class="field-container">
+        <input type="text" th:field="*{mileage}" placeholder="Mileage">
+        <p th:if="${#fields.hasErrors('mileage')}" th:errors="*{mileage}"></p>
+    </div>
+    <div class="field-container">
+        <label for="transmission">Transmission: </label>
+        <select th:field="*{transmission}" id="transmission">
+            <option value="Manual" selected>Manual</option>
+            <option value="Automatic">Automatic</option>
+            <option value="CVT">CVT</option>
+        </select>
+        <p th:if="${#fields.hasErrors('transmission')}" th:errors="*{transmission}"></p>
+    </div>
+    <div class="field-container">
+        <label for="seats">Seats: </label>
+        <div class="select-wrapper">
+            <select th:field="*{seats}" id="seats">
+                <option value="5" selected>5</option>
+                <option value="2">2</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+        <p th:if="${#fields.hasErrors('seats')}" th:errors="*{seats}"></p>
+    </div>
+    <div class="field-container">
+        <label for="luggage">Luggage(bags): </label>
+        <div class="select-wrapper">
+            <select th:field="*{luggage}" id="luggage">
+                <option value="4" selected>4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+        </div>
+        <p th:if="${#fields.hasErrors('luggage')}" th:errors="*{luggage}"></p>
+    </div>
+    <div class="field-container">
+        <label for="fuel">Fuel: </label>
+        <div class="select-wrapper">
+            <select class="select-css" th:field="*{fuel}" id="fuel">
+                <option value="Petrol" selected>Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Gas">Gas</option>
+                <option value="Hydrogen">Hydrogen (for Electric Cars)</option>
+            </select>
+        </div>
+        <p th:if="${#fields.hasErrors('fuel')}" th:errors="*{fuel}"></p>
+    </div>
+    <div class="field-container">
+        <textarea th:field="*{description}" placeholder="Description" rows="6"></textarea>
+        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+    </div>
+
+    <div>
+        <label for="file">Image: </label>
+        <input type="file" th:field="*{file}" id="file">
+        <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>
+    </div>
+
+    <div class="btn-submit-container">
+        <button type="submit">Add Car</button>
+    </div>
+</form>
+</body>
+</html>
